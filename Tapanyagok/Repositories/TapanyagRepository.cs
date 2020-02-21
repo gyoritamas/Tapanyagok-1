@@ -25,18 +25,18 @@ namespace Tapanyagok.Repositories
             // Keresés
             if (!string.IsNullOrWhiteSpace(search))
             {
-                search = search.ToLower();
+                search = search.Replace('.',',').ToLower();
 
-                float ertek;
-                float.TryParse(search.Replace('.',','), out ertek);
+                double szamertek;
+                double.TryParse(search, out szamertek);
 
-                if (ertek > 0)
+                if (szamertek > 0)
                 {
                     query = query.Where(x => 
-                        x.energia == ertek ||
-                        x.feherje.Value == ertek ||
-                        x.zsir.Value == ertek ||
-                        x.szenhidrat.Value == ertek);
+                        x.energia == szamertek ||
+                        x.feherje.Value == szamertek ||
+                        x.zsir.Value == szamertek ||
+                        x.szenhidrat.Value == szamertek);
                 }
                 else
                 {

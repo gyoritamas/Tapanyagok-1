@@ -38,20 +38,20 @@
             this.NextButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.MentestoolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.UjtoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.TorlesoolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.keresestoolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.MentestoolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.KeresestoolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tapanyagokBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.energiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feherjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zsirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.szenhidratDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tapanyagokBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -160,6 +160,15 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.Click += new System.EventHandler(this.KeresestoolStripButton_Click);
             // 
+            // MentestoolStripButton1
+            // 
+            this.MentestoolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("MentestoolStripButton1.Image")));
+            this.MentestoolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MentestoolStripButton1.Name = "MentestoolStripButton1";
+            this.MentestoolStripButton1.Size = new System.Drawing.Size(66, 22);
+            this.MentestoolStripButton1.Text = "Mentés";
+            this.MentestoolStripButton1.Click += new System.EventHandler(this.mentestoolStripButton_Click);
+            // 
             // UjtoolStripButton
             // 
             this.UjtoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("UjtoolStripButton.Image")));
@@ -185,8 +194,17 @@
             // 
             // keresestoolStripTextBox
             // 
+            this.keresestoolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.keresestoolStripTextBox.Name = "keresestoolStripTextBox";
             this.keresestoolStripTextBox.Size = new System.Drawing.Size(200, 25);
+            // 
+            // KeresestoolStripButton1
+            // 
+            this.KeresestoolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("KeresestoolStripButton1.Image")));
+            this.KeresestoolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.KeresestoolStripButton1.Name = "KeresestoolStripButton1";
+            this.KeresestoolStripButton1.Size = new System.Drawing.Size(66, 22);
+            this.KeresestoolStripButton1.Text = "Keresés";
             // 
             // dataGridView1
             // 
@@ -212,62 +230,46 @@
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
-            // MentestoolStripButton1
+            // tapanyagokBindingSource
             // 
-            this.MentestoolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("MentestoolStripButton1.Image")));
-            this.MentestoolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MentestoolStripButton1.Name = "MentestoolStripButton1";
-            this.MentestoolStripButton1.Size = new System.Drawing.Size(66, 22);
-            this.MentestoolStripButton1.Text = "Mentés";
-            this.MentestoolStripButton1.Click += new System.EventHandler(this.mentestoolStripButton_Click);
-            // 
-            // KeresestoolStripButton1
-            // 
-            this.KeresestoolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("KeresestoolStripButton1.Image")));
-            this.KeresestoolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.KeresestoolStripButton1.Name = "KeresestoolStripButton1";
-            this.KeresestoolStripButton1.Size = new System.Drawing.Size(66, 22);
-            this.KeresestoolStripButton1.Text = "Keresés";
+            this.tapanyagokBindingSource.DataSource = typeof(Tapanyagok.Models.tapanyag);
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn.HeaderText = "id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // nevDataGridViewTextBoxColumn
             // 
             this.nevDataGridViewTextBoxColumn.DataPropertyName = "nev";
-            this.nevDataGridViewTextBoxColumn.HeaderText = "nev";
+            this.nevDataGridViewTextBoxColumn.HeaderText = "Név";
             this.nevDataGridViewTextBoxColumn.Name = "nevDataGridViewTextBoxColumn";
             // 
             // energiaDataGridViewTextBoxColumn
             // 
             this.energiaDataGridViewTextBoxColumn.DataPropertyName = "energia";
-            this.energiaDataGridViewTextBoxColumn.HeaderText = "energia";
+            this.energiaDataGridViewTextBoxColumn.HeaderText = "Energia";
             this.energiaDataGridViewTextBoxColumn.Name = "energiaDataGridViewTextBoxColumn";
             // 
             // feherjeDataGridViewTextBoxColumn
             // 
             this.feherjeDataGridViewTextBoxColumn.DataPropertyName = "feherje";
-            this.feherjeDataGridViewTextBoxColumn.HeaderText = "feherje";
+            this.feherjeDataGridViewTextBoxColumn.HeaderText = "Fehérje";
             this.feherjeDataGridViewTextBoxColumn.Name = "feherjeDataGridViewTextBoxColumn";
             // 
             // zsirDataGridViewTextBoxColumn
             // 
             this.zsirDataGridViewTextBoxColumn.DataPropertyName = "zsir";
-            this.zsirDataGridViewTextBoxColumn.HeaderText = "zsir";
+            this.zsirDataGridViewTextBoxColumn.HeaderText = "Zsír";
             this.zsirDataGridViewTextBoxColumn.Name = "zsirDataGridViewTextBoxColumn";
             // 
             // szenhidratDataGridViewTextBoxColumn
             // 
             this.szenhidratDataGridViewTextBoxColumn.DataPropertyName = "szenhidrat";
-            this.szenhidratDataGridViewTextBoxColumn.HeaderText = "szenhidrat";
+            this.szenhidratDataGridViewTextBoxColumn.HeaderText = "Szénhidrát";
             this.szenhidratDataGridViewTextBoxColumn.Name = "szenhidratDataGridViewTextBoxColumn";
-            // 
-            // tapanyagokBindingSource
-            // 
-            this.tapanyagokBindingSource.DataSource = typeof(Tapanyagok.Models.tapanyag);
             // 
             // TablazatForm
             // 
@@ -307,14 +309,14 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox keresestoolStripTextBox;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource tapanyagokBindingSource;
+        private System.Windows.Forms.ToolStripButton MentestoolStripButton1;
+        private System.Windows.Forms.ToolStripButton KeresestoolStripButton1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nevDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn energiaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn feherjeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zsirDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn szenhidratDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource tapanyagokBindingSource;
-        private System.Windows.Forms.ToolStripButton MentestoolStripButton1;
-        private System.Windows.Forms.ToolStripButton KeresestoolStripButton1;
     }
 }

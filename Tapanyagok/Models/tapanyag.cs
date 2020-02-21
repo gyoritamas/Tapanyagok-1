@@ -16,9 +16,9 @@ namespace Tapanyagok.Models
     {
         public int id { get; set; }
         public string nev { get; set; }
-        public float energia { get; set; }
-        public Nullable<float> feherje { get; set; }
-        public Nullable<float> zsir { get; set; }
-        public Nullable<float> szenhidrat { get; set; }
+        public double energia { get; set; }
+        public Nullable<double> feherje { get; set; }
+        public Nullable<double> zsir { get; set; }
+        public Nullable<double> szenhidrat { get; set; }
     }
 }
