@@ -45,17 +45,21 @@
             this.keresestoolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.KeresestoolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tapanyagokBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.energiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feherjeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zsirDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.szenhidratDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.szerkesztésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.torlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tapanyagokBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tapanyagokBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,7 +189,7 @@
             this.TorlesoolStripButton1.Name = "TorlesoolStripButton1";
             this.TorlesoolStripButton1.Size = new System.Drawing.Size(57, 22);
             this.TorlesoolStripButton1.Text = "Törlés";
-            this.TorlesoolStripButton1.Click += new System.EventHandler(this.TorlestoolStripButton_Click);
+            this.TorlesoolStripButton1.Click += new System.EventHandler(this.TorlesoolStripButton1_Click);
             // 
             // toolStripSeparator1
             // 
@@ -223,16 +227,13 @@
             this.feherjeDataGridViewTextBoxColumn,
             this.zsirDataGridViewTextBoxColumn,
             this.szenhidratDataGridViewTextBoxColumn});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.tapanyagokBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 28);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(775, 376);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            // 
-            // tapanyagokBindingSource
-            // 
-            this.tapanyagokBindingSource.DataSource = typeof(Tapanyagok.Models.tapanyag);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -271,6 +272,32 @@
             this.szenhidratDataGridViewTextBoxColumn.HeaderText = "Szénhidrát";
             this.szenhidratDataGridViewTextBoxColumn.Name = "szenhidratDataGridViewTextBoxColumn";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.szerkesztésToolStripMenuItem,
+            this.torlesToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(133, 48);
+            // 
+            // szerkesztésToolStripMenuItem
+            // 
+            this.szerkesztésToolStripMenuItem.Name = "szerkesztésToolStripMenuItem";
+            this.szerkesztésToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.szerkesztésToolStripMenuItem.Text = "Szerkesztés";
+            this.szerkesztésToolStripMenuItem.Click += new System.EventHandler(this.SzerkToolStripMenuItem_Click);
+            // 
+            // torlesToolStripMenuItem
+            // 
+            this.torlesToolStripMenuItem.Name = "torlesToolStripMenuItem";
+            this.torlesToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.torlesToolStripMenuItem.Text = "Törlés";
+            this.torlesToolStripMenuItem.Click += new System.EventHandler(this.torlesToolStripMenuItem_Click);
+            // 
+            // tapanyagokBindingSource
+            // 
+            this.tapanyagokBindingSource.DataSource = typeof(Tapanyagok.Models.tapanyag);
+            // 
             // TablazatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +315,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tapanyagokBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -318,5 +346,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn feherjeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zsirDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn szenhidratDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem szerkesztésToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem torlesToolStripMenuItem;
     }
 }

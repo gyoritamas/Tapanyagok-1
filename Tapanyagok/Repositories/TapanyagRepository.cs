@@ -27,16 +27,16 @@ namespace Tapanyagok.Repositories
             {
                 search = search.Replace('.',',').ToLower();
 
-                double szamertek;
-                double.TryParse(search, out szamertek);
+                decimal szamertek;
+                decimal.TryParse(search, out szamertek);
 
                 if (szamertek > 0)
                 {
                     query = query.Where(x => 
                         x.energia == szamertek ||
-                        x.feherje.Value == szamertek ||
-                        x.zsir.Value == szamertek ||
-                        x.szenhidrat.Value == szamertek);
+                        x.feherje == szamertek ||
+                        x.zsir == szamertek ||
+                        x.szenhidrat == szamertek);
                 }
                 else
                 {

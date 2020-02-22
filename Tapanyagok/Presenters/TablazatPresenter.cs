@@ -48,8 +48,9 @@ namespace Tapanyagok.Presenters
             }
         }
 
-        public void Modify(tapanyag tapanyag)
+        public void Modify(int index, tapanyag tapanyag)
         {
+            view.bindingList[index] = tapanyag;
             repo.Update(tapanyag);
         }
 

@@ -102,33 +102,33 @@ namespace Tapanyagok.Views
 
         private void NewDGRow()
         {
-            //using (var szerkForm = new JarmuKategoriaSzerkForm())
-            //{
-            //    DialogResult dr = szerkForm.ShowDialog(this);
-            //    if (dr == DialogResult.OK)
-            //    {
-            //        presenter.Add(szerkForm.jarmukategoria);
-            //        szerkForm.Close();
-            //    }
-            //}
+            using (var szerkForm = new TapanyagForm())
+            {
+                DialogResult dr = szerkForm.ShowDialog(this);
+                if (dr == DialogResult.OK)
+                {
+                    presenter.Add(szerkForm.tapanyag);
+                    szerkForm.Close();
+                }
+            }
         }
         private void EditDGRow(int index)
         {
-            //var jk = (jarmukategoria)dataGridView1.Rows[index].DataBoundItem;
+            var tapanyag = (tapanyag)dataGridView1.Rows[index].DataBoundItem;
 
-            //if (jk != null)
-            //{
-            //    using (var modForm = new JarmuKategoriaSzerkForm())
-            //    {
-            //        modForm.jarmukategoria = jk;
-            //        DialogResult dr = modForm.ShowDialog(this);
-            //        if (dr == DialogResult.OK)
-            //        {
-            //            presenter.Modify(modForm.jarmukategoria);
-            //            modForm.Close();
-            //        }
-            //    }
-            //}
+            if (tapanyag != null)
+            {
+                using (var szerkForm = new TapanyagForm())
+                {
+                    szerkForm.tapanyag = tapanyag;
+                    DialogResult dr = szerkForm.ShowDialog(this);
+                    if (dr == DialogResult.OK)
+                    {
+                        presenter.Modify(index, szerkForm.tapanyag);
+                        szerkForm.Close();
+                    }
+                }
+            }
         }
         private void DelDGRow()
         {
@@ -179,16 +179,6 @@ namespace Tapanyagok.Views
             NewDGRow();
         }
 
-        private void TorlestoolStripButton_Click(object sender, EventArgs e)
-        {
-            DelDGRow();
-        }
-
-        private void UjToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NewDGRow();
-        }
-
         private void SzerkToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows != null)
@@ -201,8 +191,19 @@ namespace Tapanyagok.Views
             EditDGRow(dataGridView1.SelectedRows[0].Index);
         }
 
-        private void TorlesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void torlesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DelDGRow();
+        }
+
+        private void TorlesoolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows != null)
+            {
+                var sorIndex = dataGridView1.SelectedCells[0].RowIndex;
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[sorIndex].Selected = true;
+            }
             DelDGRow();
         }
     }
