@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Dokumentumok\Vasvári\Programozási nyelvek\Beadandók\03 - Tápanyagok\Tapanyagok\Tapanyagok\Models\EtelModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Dokumentumok\Visual Studio 2019\Repos\borosbence\Tapanyagok\Tapanyagok\Models\EtelModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

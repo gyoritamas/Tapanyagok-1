@@ -9,7 +9,7 @@ using Tapanyagok.ViewInterfaces;
 
 namespace Tapanyagok.Presenters
 {
-    class TablazatPresenter
+    public class TablazatPresenter
     {
         private ITablazatView view;
         private TapanyagRepository repo = new TapanyagRepository();
@@ -29,7 +29,7 @@ namespace Tapanyagok.Presenters
         {
             if (view.bindingList.Any(x => x.nev == tapanyag.nev))
             {
-                //throw new Exception("Már létezik ilyen névvel kategória!");
+                throw new Exception("Már létezik ilyen névvel tápanyag!");
             }
             else
             {

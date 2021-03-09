@@ -8,7 +8,7 @@ using Tapanyagok.Models;
 
 namespace Tapanyagok.ViewInterfaces
 {
-    interface ITablazatView
+    public interface ITablazatView
     {
         BindingList<tapanyag> bindingList { get; set; }
         int pageNumber { get; set; }

@@ -14,8 +14,8 @@ namespace Tapanyagok.Repositories
         private int _totalItems;
 
         public BindingList<tapanyag> GetAllTapanyag(
-            int page = 0,
-            int itemsPerPage = 0,
+            int page = 1,
+            int itemsPerPage = 25,
             string search = null,
             string sortBy = null,
             bool ascending = true)
@@ -32,7 +32,7 @@ namespace Tapanyagok.Repositories
 
                 if (szamertek > 0)
                 {
-                    query = query.Where(x => 
+                    query = query.Where(x =>
                         x.energia == szamertek ||
                         x.feherje == szamertek ||
                         x.zsir == szamertek ||
@@ -40,8 +40,8 @@ namespace Tapanyagok.Repositories
                 }
                 else
                 {
-                    query = query.Where(x => x.nev.Contains(search));
-                }
+                    query = query.Where(x => x.nev.ToLower().Contains(search));
+                }          
             }
 
             // Sorbarendezés
@@ -49,9 +49,6 @@ namespace Tapanyagok.Repositories
             {
                 switch (sortBy)
                 {
-                    default:
-                        query = ascending ? query.OrderBy(x => x.id) : query.OrderByDescending(x => x.id);
-                        break;
                     case "nev":
                         query = ascending ? query.OrderBy(x => x.nev) : query.OrderByDescending(x => x.nev);
                         break;
@@ -66,6 +63,8 @@ namespace Tapanyagok.Repositories
                         break;
                     case "szenhidrat":
                         query = ascending ? query.OrderBy(x => x.szenhidrat) : query.OrderByDescending(x => x.szenhidrat);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -88,29 +87,38 @@ namespace Tapanyagok.Repositories
             return _totalItems;
         }
 
-        public void Insert(tapanyag jk)
+        public tapanyag GetTapanyag(int id)
         {
-            db.tapanyag.Add(jk);
+            return db.tapanyag.Find(id);
+        }
+
+        public void Insert(tapanyag tapanyag)
+        {
+            db.tapanyag.Add(tapanyag);
         }
 
         public void Delete(int id)
         {
-            var jk = db.tapanyag.Find(id);
-            db.tapanyag.Remove(jk);
+            var tapanyag = db.tapanyag.Find(id);
+            if (tapanyag != null)
+            {
+                db.tapanyag.Remove(tapanyag);
+            }
         }
 
         public void Update(tapanyag param)
         {
-            var jk = db.tapanyag.Find(param.id);
-            if (jk != null)
+            var tapanyag = db.tapanyag.Find(param.id);
+            if (tapanyag != null)
             {
-                db.Entry(jk).CurrentValues.SetValues(param);
+                db.Entry(tapanyag).CurrentValues.SetValues(param);
             }
         }
 
         public bool Exists(tapanyag tapanyag)
         {
-            return db.tapanyag.Any(x => x.id == tapanyag.id);
+            // return db.tapanyag.Any(x => x.id == tapanyag.id);
+            return db.tapanyag.Any(x => x == tapanyag);
         }
 
         public void Save()

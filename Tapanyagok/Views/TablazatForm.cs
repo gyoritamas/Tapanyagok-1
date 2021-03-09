@@ -51,7 +51,8 @@ namespace Tapanyagok.Views
             set
             {
                 pageCount = (value - 1) / itemsPerPage + 1;
-                label1.Text = pageNumber.ToString() + "/" + pageCount.ToString();
+                PageLabel.Text = pageNumber.ToString() + "/" + pageCount.ToString();
+                TotalItemLabel.Text = "Összesen: " + value;
             }
         }
 
@@ -165,7 +166,6 @@ namespace Tapanyagok.Views
                     sortBy = "szenhidrat";
                     break;
                 default:
-                    sortBy = "id";
                     break;
             }
 
