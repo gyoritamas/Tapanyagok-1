@@ -40,7 +40,7 @@ namespace Tapanyagok.Repositories
                 }
                 else
                 {
-                    query = query.Where(x => x.nev.ToLower().Contains(search));
+                    query = query.Where(x => x.nev.Contains(search));
                 }          
             }
 

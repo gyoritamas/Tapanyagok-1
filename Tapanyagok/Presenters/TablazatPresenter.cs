@@ -33,7 +33,7 @@ namespace Tapanyagok.Presenters
             }
             else
             {
-                view.bindingList.Add(tapanyag);
+                view.bindingList.Insert(0,tapanyag);
                 repo.Insert(tapanyag);
             }
         }

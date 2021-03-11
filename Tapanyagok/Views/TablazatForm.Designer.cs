@@ -220,6 +220,7 @@
             this.KeresestoolStripButton1.Name = "KeresestoolStripButton1";
             this.KeresestoolStripButton1.Size = new System.Drawing.Size(66, 22);
             this.KeresestoolStripButton1.Text = "Keresés";
+            this.KeresestoolStripButton1.Click += new System.EventHandler(this.KeresestoolStripButton_Click);
             // 
             // dataGridView1
             // 
@@ -277,6 +278,7 @@
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Azonosító";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // nevDataGridViewTextBoxColumn
             // 

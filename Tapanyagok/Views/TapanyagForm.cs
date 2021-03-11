@@ -24,17 +24,12 @@ namespace Tapanyagok.Views
         {
             get
             {
-                var etel = new tapanyag(
+                return new tapanyag(id,
                     textBox1.Text, 
                     EnergianumericUpDown.Value,
                     FeherjenumericUpDown.Value, 
                     ZsirnumericUpDown.Value,
                     SzenhidratnumericUpDown.Value);
-                if (id > 0)
-                {
-                    etel.id = id;
-                }
-                return etel;
             }
             set
             {

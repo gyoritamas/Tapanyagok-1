@@ -61,14 +61,30 @@ namespace Tapanyagok.Views
             presenter.LoadData();
         }
 
+        private void KeresestoolStripButton_Click(object sender, EventArgs e)
+        {
+            presenter.LoadData();
+        }
+
         private void mentestoolStripButton_Click(object sender, EventArgs e)
         {
             presenter.Save();
         }
 
-        private void KeresestoolStripButton_Click(object sender, EventArgs e)
+        private void UjtoolStripButton_Click(object sender, EventArgs e)
         {
-            presenter.LoadData();
+            NewDGRow();
+        }
+
+        private void TorlesoolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows != null)
+            {
+                var sorIndex = dataGridView1.SelectedCells[0].RowIndex;
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[sorIndex].Selected = true;
+            }
+            DelDGRow();
         }
 
         private void FirstButton_Click(object sender, EventArgs e)
@@ -99,44 +115,6 @@ namespace Tapanyagok.Views
         {
             pageNumber = pageCount;
             presenter.LoadData();
-        }
-
-        private void NewDGRow()
-        {
-            using (var szerkForm = new TapanyagForm())
-            {
-                DialogResult dr = szerkForm.ShowDialog(this);
-                if (dr == DialogResult.OK)
-                {
-                    presenter.Add(szerkForm.tapanyag);
-                    szerkForm.Close();
-                }
-            }
-        }
-        private void EditDGRow(int index)
-        {
-            var tapanyag = (tapanyag)dataGridView1.Rows[index].DataBoundItem;
-
-            if (tapanyag != null)
-            {
-                using (var szerkForm = new TapanyagForm())
-                {
-                    szerkForm.tapanyag = tapanyag;
-                    DialogResult dr = szerkForm.ShowDialog(this);
-                    if (dr == DialogResult.OK)
-                    {
-                        presenter.Modify(index, szerkForm.tapanyag);
-                        szerkForm.Close();
-                    }
-                }
-            }
-        }
-        private void DelDGRow()
-        {
-            while (dataGridView1.SelectedRows.Count > 0)
-            {
-                presenter.Remove(dataGridView1.SelectedRows[0].Index);
-            }
         }
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -174,9 +152,50 @@ namespace Tapanyagok.Views
             presenter.LoadData();
         }
 
-        private void UjtoolStripButton_Click(object sender, EventArgs e)
+        private void NewDGRow()
         {
-            NewDGRow();
+            using (var szerkForm = new TapanyagForm())
+            {
+                DialogResult dr = szerkForm.ShowDialog(this);
+                if (dr == DialogResult.OK)
+                {
+                    try
+                    {
+                        presenter.Add(szerkForm.tapanyag);
+                        szerkForm.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
+
+        private void EditDGRow(int index)
+        {
+            var tapanyag = (tapanyag)dataGridView1.Rows[index].DataBoundItem;
+
+            if (tapanyag != null)
+            {
+                using (var szerkForm = new TapanyagForm())
+                {
+                    szerkForm.tapanyag = tapanyag;
+                    DialogResult dr = szerkForm.ShowDialog(this);
+                    if (dr == DialogResult.OK)
+                    {
+                        presenter.Modify(index, szerkForm.tapanyag);
+                        szerkForm.Close();
+                    }
+                }
+            }
+        }
+        private void DelDGRow()
+        {
+            while (dataGridView1.SelectedRows.Count > 0)
+            {
+                presenter.Remove(dataGridView1.SelectedRows[0].Index);
+            }
         }
 
         private void SzerkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,17 +212,6 @@ namespace Tapanyagok.Views
 
         private void torlesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DelDGRow();
-        }
-
-        private void TorlesoolStripButton1_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows != null)
-            {
-                var sorIndex = dataGridView1.SelectedCells[0].RowIndex;
-                dataGridView1.ClearSelection();
-                dataGridView1.Rows[sorIndex].Selected = true;
-            }
             DelDGRow();
         }
     }
